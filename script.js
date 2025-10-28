@@ -50,6 +50,8 @@ const mockCars = [
 ];
 
 // API Configuration
+// To use with json-server, update this URL to match your server
+// For production, replace with your backend API endpoint
 const API_URL = 'http://localhost:3001/cars';
 
 // API Functions
@@ -223,7 +225,7 @@ function renderCarForm() {
             
             <div class="form-group">
                 <label for="year">Año:</label>
-                <input type="number" id="year" name="year" value="${car.year}" min="1900" max="2025" required>
+                <input type="number" id="year" name="year" value="${car.year}" min="1900" max="${new Date().getFullYear() + 1}" required>
             </div>
             
             <div class="form-group">
@@ -307,7 +309,8 @@ async function handleFormSubmit(e) {
     }
 }
 
-// Make functions available globally for onclick handlers
+// Make functions available globally for inline onclick handlers
+// Note: In a production app, consider using event delegation instead
 window.editCar = editCar;
 window.cancelEdit = cancelEdit;
 window.confirmDelete = confirmDelete;
