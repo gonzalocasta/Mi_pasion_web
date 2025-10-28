@@ -1,0 +1,6 @@
+{
+  "routes": {
+    "/cars": "/db/cars",
+    "/cars/:id": "/db/cars/:id"
+  }
+}
