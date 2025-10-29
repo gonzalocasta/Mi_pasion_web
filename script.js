@@ -1,10 +1,15 @@
 // SPA Application State
 const state = {
     cars: [],
+    filteredCars: [], // For search results
     currentPage: 'home',
     editingCar: null,
     manufacturers: [], // External API data
-    loadingManufacturers: false
+    loadingManufacturers: false,
+    searchQuery: {
+        make: '',
+        model: ''
+    }
 };
 
 // Mock data (in case API is not available)
@@ -261,6 +266,60 @@ async function deleteCar(id) {
     state.cars = state.cars.filter(car => car.id !== id);
 }
 
+// ===== Search Functionality =====
+function filterCars() {
+    const { make, model } = state.searchQuery;
+    
+    if (!make && !model) {
+        state.filteredCars = [...state.cars];
+        return;
+    }
+    
+    state.filteredCars = state.cars.filter(car => {
+        const makeLower = car.make.toLowerCase();
+        const modelLower = car.model.toLowerCase();
+        const searchMakeLower = make.toLowerCase();
+        const searchModelLower = model.toLowerCase();
+        
+        const makeMatch = !make || makeLower.includes(searchMakeLower);
+        const modelMatch = !model || modelLower.includes(searchModelLower);
+        
+        return makeMatch && modelMatch;
+    });
+}
+
+function handleSearch(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(e.target);
+    state.searchQuery.make = formData.get('searchMake') || '';
+    state.searchQuery.model = formData.get('searchModel') || '';
+    
+    filterCars();
+    render();
+}
+
+function clearSearch() {
+    state.searchQuery.make = '';
+    state.searchQuery.model = '';
+    state.filteredCars = [...state.cars];
+    render();
+}
+
+function getDisplayCars() {
+    // If there's an active search, return filtered cars
+    if (state.searchQuery.make || state.searchQuery.model) {
+        return state.filteredCars;
+    }
+    return state.cars;
+}
+
+// Get unique makes from current cars for search dropdown
+function getUniqueMakes() {
+    const makes = state.cars.map(car => car.make);
+    return [...new Set(makes)].sort();
+}
+
 // Router
 function navigateTo(page) {
     state.currentPage = page;
@@ -284,6 +343,7 @@ function render() {
     switch (state.currentPage) {
         case 'home':
             app.innerHTML = renderHomePage();
+            attachHomeEventListeners();
             break;
         case 'admin':
             app.innerHTML = renderAdminPage();
@@ -291,24 +351,77 @@ function render() {
             break;
         default:
             app.innerHTML = renderHomePage();
+            attachHomeEventListeners();
     }
 }
 
+function renderSearchBar() {
+    const uniqueMakes = getUniqueMakes();
+    
+    return `
+        <div class="search-container">
+            <h3>🔍 Buscar Autos</h3>
+            <form id="searchForm" class="search-form">
+                <div class="search-group">
+                    <label for="searchMake">Marca</label>
+                    <select id="searchMake" name="searchMake" class="search-select">
+                        <option value="">Todas las marcas</option>
+                        ${uniqueMakes.map(make => `
+                            <option value="${sanitizeAttribute(make)}" ${state.searchQuery.make === make ? 'selected' : ''}>
+                                ${sanitizeHTML(make)}
+                            </option>
+                        `).join('')}
+                    </select>
+                </div>
+                <div class="search-group">
+                    <label for="searchModel">Modelo</label>
+                    <input 
+                        type="text" 
+                        id="searchModel" 
+                        name="searchModel" 
+                        class="search-input"
+                        placeholder="Buscar por modelo..."
+                        value="${sanitizeAttribute(state.searchQuery.model)}"
+                    >
+                </div>
+                <button type="submit" class="search-button">Buscar</button>
+            </form>
+        </div>
+    `;
+}
+
 function renderHomePage() {
+    const displayCars = getDisplayCars();
+    const hasSearch = state.searchQuery.make || state.searchQuery.model;
+    
     return `
         <div class="page-header">
             <h1>Bienvenido a Mi Pasión</h1>
             <p>Descubre nuestra increíble colección de autos</p>
         </div>
         
-        ${state.cars.length === 0 ? `
+        ${state.cars.length > 0 ? renderSearchBar() : ''}
+        
+        ${hasSearch ? `
+            <div class="search-results-info">
+                ${displayCars.length} resultado${displayCars.length !== 1 ? 's' : ''} encontrado${displayCars.length !== 1 ? 's' : ''}
+                ${displayCars.length === 0 ? '- <a href="#" onclick="clearSearch(); return false;" style="color: white; text-decoration: underline;">Limpiar búsqueda</a>' : ''}
+            </div>
+        ` : ''}
+        
+        ${displayCars.length === 0 && !hasSearch ? `
             <div class="empty-state">
                 <h2>No hay autos disponibles</h2>
                 <p>Visita el panel de administración para agregar autos</p>
             </div>
+        ` : displayCars.length === 0 && hasSearch ? `
+            <div class="empty-state">
+                <h2>No se encontraron resultados</h2>
+                <p>Intenta con otros criterios de búsqueda</p>
+            </div>
         ` : `
             <div class="car-grid">
-                ${state.cars.map(car => renderCarCard(car)).join('')}
+                ${displayCars.map(car => renderCarCard(car)).join('')}
             </div>
         `}
     `;
@@ -492,6 +605,13 @@ function renderCarList() {
 }
 
 // Event Listeners
+function attachHomeEventListeners() {
+    const searchForm = document.getElementById('searchForm');
+    if (searchForm) {
+        searchForm.addEventListener('submit', handleSearch);
+    }
+}
+
 function attachAdminEventListeners() {
     const form = document.getElementById('carForm');
     if (form) {
@@ -637,6 +757,7 @@ async function handleFormSubmit(e) {
 window.editCar = editCar;
 window.cancelEdit = cancelEdit;
 window.confirmDelete = confirmDelete;
+window.clearSearch = clearSearch;
 
 function editCar(id) {
     state.editingCar = state.cars.find(car => car.id === id);
@@ -653,6 +774,10 @@ async function confirmDelete(id) {
     if (confirm(`¿Estás seguro de que quieres eliminar ${car.make} ${car.model}?`)) {
         try {
             await deleteCar(id);
+            // Also update filtered cars if there's an active search
+            if (state.searchQuery.make || state.searchQuery.model) {
+                filterCars();
+            }
             render();
             showMessage('Auto eliminado correctamente', 'success');
         } catch (error) {
@@ -690,6 +815,9 @@ async function init() {
         fetchCars(),
         fetchManufacturers() // Load manufacturers from external API
     ]);
+    
+    // Initialize filtered cars with all cars
+    state.filteredCars = [...state.cars];
     
     // Handle navigation
     window.addEventListener('hashchange', () => {
