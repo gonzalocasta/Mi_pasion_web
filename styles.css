@@ -244,6 +244,10 @@ main {
     margin-top: 0.25rem;
 }
 
+.field-invalid {
+    border-color: #dc3545 !important;
+}
+
 .form-actions {
     display: flex;
     gap: 1rem;
@@ -383,9 +387,10 @@ img[loading="lazy"].loaded {
 
 /* Performance: Reduced motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
+    .spinner,
+    .car-card,
+    .button,
+    img[loading="lazy"] {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;

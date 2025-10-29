@@ -95,8 +95,8 @@ function validateCarForm(formData) {
         errors.push('La marca debe tener al menos 2 caracteres');
     } else if (formData.make.length > 50) {
         errors.push('La marca no puede exceder 50 caracteres');
-    } else if (!/^[a-zA-Z\s\-]+$/.test(formData.make)) {
-        errors.push('La marca solo puede contener letras, espacios y guiones');
+    } else if (!/^[a-zA-Z]+(?:[\s\-][a-zA-Z]+)*$/.test(formData.make)) {
+        errors.push('La marca solo puede contener letras, espacios y guiones (no al inicio o final)');
     }
     
     // Validate model (required, 1-50 characters)
@@ -565,16 +565,15 @@ function validateFieldOnBlur(field) {
         if (!errorElement) {
             errorElement = document.createElement('small');
             errorElement.className = 'field-error';
-            errorElement.style.color = 'red';
             field.parentElement.appendChild(errorElement);
         }
         errorElement.textContent = error;
-        field.style.borderColor = 'red';
+        field.classList.add('field-invalid');
     } else {
         if (errorElement) {
             errorElement.remove();
         }
-        field.style.borderColor = '';
+        field.classList.remove('field-invalid');
     }
 }
 
