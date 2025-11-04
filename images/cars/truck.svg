@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" width="400" height="200">
+  <defs>
+    <linearGradient id="truckGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2f855a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#276749;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Shadow -->
+  <ellipse cx="200" cy="185" rx="190" ry="15" fill="#000" opacity="0.2"/>
+  <!-- Truck bed -->
+  <rect x="210" y="90" width="130" height="50" fill="url(#truckGrad)" stroke="#1a365d" stroke-width="2"/>
+  <!-- Cabin -->
+  <path d="M70 90 L95 70 L140 65 L200 65 L200 90 L200 140 L190 145 L170 145 L160 135 L80 135 L70 145 L50 145 L40 140 L40 110 Z" 
+        fill="url(#truckGrad)" stroke="#1a365d" stroke-width="2"/>
+  <!-- Windows -->
+  <path d="M110 75 L145 80 L190 80 L185 70 L120 70 Z" fill="#87ceeb" opacity="0.6" stroke="#1a365d" stroke-width="1"/>
+  <!-- Wheels -->
+  <circle cx="100" cy="145" r="24" fill="#1a202c" stroke="#4a5568" stroke-width="3"/>
+  <circle cx="100" cy="145" r="14" fill="#4a5568"/>
+  <circle cx="290" cy="145" r="24" fill="#1a202c" stroke="#4a5568" stroke-width="3"/>
+  <circle cx="290" cy="145" r="14" fill="#4a5568"/>
+  <!-- Details -->
+  <rect x="50" y="105" width="15" height="8" fill="#ffd93d" rx="2"/>
+  <circle cx="215" cy="100" r="3" fill="#ff6b6b"/>
+</svg>

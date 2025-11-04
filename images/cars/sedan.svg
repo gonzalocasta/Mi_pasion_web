@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" width="400" height="200">
+  <defs>
+    <linearGradient id="carGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a5568;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2d3748;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Car body -->
+  <ellipse cx="200" cy="180" rx="180" ry="15" fill="#000" opacity="0.2"/>
+  <path d="M80 120 L100 100 L140 85 L260 85 L300 100 L320 120 L340 140 L340 150 L330 155 L310 155 L300 145 L100 145 L90 155 L70 155 L60 150 L60 140 Z" 
+        fill="url(#carGrad)" stroke="#1a202c" stroke-width="2"/>
+  <!-- Windows -->
+  <path d="M120 95 L145 100 L255 100 L280 95 L270 90 L150 90 Z" fill="#87ceeb" opacity="0.6" stroke="#1a202c" stroke-width="1"/>
+  <!-- Wheels -->
+  <circle cx="120" cy="155" r="20" fill="#1a202c" stroke="#4a5568" stroke-width="3"/>
+  <circle cx="120" cy="155" r="12" fill="#4a5568"/>
+  <circle cx="280" cy="155" r="20" fill="#1a202c" stroke="#4a5568" stroke-width="3"/>
+  <circle cx="280" cy="155" r="12" fill="#4a5568"/>
+  <!-- Details -->
+  <rect x="310" y="130" width="15" height="8" fill="#ff6b6b" rx="2"/>
+  <rect x="75" y="130" width="15" height="8" fill="#ffd93d" rx="2"/>
+</svg>
