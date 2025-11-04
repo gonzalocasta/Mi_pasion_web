@@ -10,7 +10,7 @@ const carBrands = [
     {
         id: 1,
         name: "Toyota",
-        logo: "🚗",
+        logo: "images/logos/toyota.svg",
         country: "Japón",
         models: [
             {
@@ -18,6 +18,7 @@ const carBrands = [
                 year: 2024,
                 price: 28000,
                 description: "Sedán elegante y confiable",
+                image: "images/cars/sedan.svg",
                 specs: {
                     motor: "2.5L 4-cilindros",
                     potencia: "203 HP",
@@ -32,6 +33,7 @@ const carBrands = [
                 year: 2024,
                 price: 22000,
                 description: "Compacto eficiente y económico",
+                image: "images/cars/sedan.svg",
                 specs: {
                     motor: "1.8L 4-cilindros",
                     potencia: "139 HP",
@@ -46,6 +48,7 @@ const carBrands = [
                 year: 2024,
                 price: 32000,
                 description: "SUV compacto versátil",
+                image: "images/cars/suv.svg",
                 specs: {
                     motor: "2.5L 4-cilindros",
                     potencia: "203 HP",
@@ -60,7 +63,7 @@ const carBrands = [
     {
         id: 2,
         name: "Honda",
-        logo: "🚙",
+        logo: "images/logos/honda.svg",
         country: "Japón",
         models: [
             {
@@ -68,6 +71,7 @@ const carBrands = [
                 year: 2024,
                 price: 29000,
                 description: "Sedán premium con tecnología avanzada",
+                image: "images/cars/sedan.svg",
                 specs: {
                     motor: "1.5L Turbo 4-cilindros",
                     potencia: "192 HP",
@@ -82,6 +86,7 @@ const carBrands = [
                 year: 2024,
                 price: 24000,
                 description: "Compacto deportivo y eficiente",
+                image: "images/cars/sedan.svg",
                 specs: {
                     motor: "2.0L 4-cilindros",
                     potencia: "158 HP",
@@ -96,6 +101,7 @@ const carBrands = [
                 year: 2024,
                 price: 33000,
                 description: "SUV familiar espacioso",
+                image: "images/cars/suv.svg",
                 specs: {
                     motor: "1.5L Turbo 4-cilindros",
                     potencia: "190 HP",
@@ -110,7 +116,7 @@ const carBrands = [
     {
         id: 3,
         name: "Ford",
-        logo: "🚐",
+        logo: "images/logos/ford.svg",
         country: "Estados Unidos",
         models: [
             {
@@ -118,6 +124,7 @@ const carBrands = [
                 year: 2024,
                 price: 35000,
                 description: "Icónico muscle car americano",
+                image: "images/cars/sedan.svg",
                 specs: {
                     motor: "2.3L EcoBoost 4-cilindros",
                     potencia: "310 HP",
@@ -132,6 +139,7 @@ const carBrands = [
                 year: 2024,
                 price: 38000,
                 description: "Pickup resistente y capaz",
+                image: "images/cars/truck.svg",
                 specs: {
                     motor: "3.5L V6 EcoBoost",
                     potencia: "400 HP",
@@ -146,6 +154,7 @@ const carBrands = [
                 year: 2024,
                 price: 36000,
                 description: "SUV de tres filas familiar",
+                image: "images/cars/suv.svg",
                 specs: {
                     motor: "2.3L EcoBoost 4-cilindros",
                     potencia: "300 HP",
@@ -160,7 +169,7 @@ const carBrands = [
     {
         id: 4,
         name: "Chevrolet",
-        logo: "🚕",
+        logo: "images/logos/chevrolet.svg",
         country: "Estados Unidos",
         models: [
             {
@@ -168,6 +177,7 @@ const carBrands = [
                 year: 2024,
                 price: 25000,
                 description: "Sedán espacioso y cómodo",
+                image: "images/cars/sedan.svg",
                 specs: {
                     motor: "1.5L Turbo 4-cilindros",
                     potencia: "160 HP",
@@ -182,6 +192,7 @@ const carBrands = [
                 year: 2024,
                 price: 32000,
                 description: "Deportivo americano potente",
+                image: "images/cars/sports.svg",
                 specs: {
                     motor: "2.0L Turbo 4-cilindros",
                     potencia: "275 HP",
@@ -196,6 +207,7 @@ const carBrands = [
                 year: 2024,
                 price: 28000,
                 description: "SUV compacto moderno",
+                image: "images/cars/suv.svg",
                 specs: {
                     motor: "1.5L Turbo 4-cilindros",
                     potencia: "175 HP",
@@ -210,7 +222,7 @@ const carBrands = [
     {
         id: 5,
         name: "Nissan",
-        logo: "🚖",
+        logo: "images/logos/nissan.svg",
         country: "Japón",
         models: [
             {
@@ -218,6 +230,7 @@ const carBrands = [
                 year: 2024,
                 price: 27000,
                 description: "Sedán moderno con excelente rendimiento",
+                image: "images/cars/sedan.svg",
                 specs: {
                     motor: "2.5L 4-cilindros",
                     potencia: "188 HP",
@@ -232,6 +245,7 @@ const carBrands = [
                 year: 2024,
                 price: 21000,
                 description: "Compacto eficiente y elegante",
+                image: "images/cars/sedan.svg",
                 specs: {
                     motor: "2.0L 4-cilindros",
                     potencia: "149 HP",
@@ -246,6 +260,7 @@ const carBrands = [
                 year: 2024,
                 price: 30000,
                 description: "SUV compacto cómodo",
+                image: "images/cars/suv.svg",
                 specs: {
                     motor: "2.5L 4-cilindros",
                     potencia: "181 HP",
@@ -260,7 +275,7 @@ const carBrands = [
     {
         id: 6,
         name: "BMW",
-        logo: "🏎️",
+        logo: "images/logos/bmw.svg",
         country: "Alemania",
         models: [
             {
@@ -268,6 +283,7 @@ const carBrands = [
                 year: 2024,
                 price: 45000,
                 description: "Sedán deportivo de lujo",
+                image: "images/cars/sedan.svg",
                 specs: {
                     motor: "2.0L Turbo 4-cilindros",
                     potencia: "255 HP",
@@ -282,6 +298,7 @@ const carBrands = [
                 year: 2024,
                 price: 62000,
                 description: "SUV de lujo espacioso",
+                image: "images/cars/suv.svg",
                 specs: {
                     motor: "3.0L Turbo 6-cilindros",
                     potencia: "335 HP",
@@ -296,7 +313,7 @@ const carBrands = [
     {
         id: 7,
         name: "Mercedes-Benz",
-        logo: "⭐",
+        logo: "images/logos/mercedes.svg",
         country: "Alemania",
         models: [
             {
@@ -304,6 +321,7 @@ const carBrands = [
                 year: 2024,
                 price: 48000,
                 description: "Sedán de lujo elegante",
+                image: "images/cars/sedan.svg",
                 specs: {
                     motor: "2.0L Turbo 4-cilindros",
                     potencia: "255 HP",
@@ -318,6 +336,7 @@ const carBrands = [
                 year: 2024,
                 price: 65000,
                 description: "SUV de lujo premium",
+                image: "images/cars/suv.svg",
                 specs: {
                     motor: "3.0L Turbo 6-cilindros",
                     potencia: "362 HP",
@@ -332,7 +351,7 @@ const carBrands = [
     {
         id: 8,
         name: "Audi",
-        logo: "🔷",
+        logo: "images/logos/audi.svg",
         country: "Alemania",
         models: [
             {
@@ -340,6 +359,7 @@ const carBrands = [
                 year: 2024,
                 price: 46000,
                 description: "Sedán premium tecnológico",
+                image: "images/cars/sedan.svg",
                 specs: {
                     motor: "2.0L Turbo 4-cilindros",
                     potencia: "261 HP",
@@ -354,6 +374,7 @@ const carBrands = [
                 year: 2024,
                 price: 52000,
                 description: "SUV premium versátil",
+                image: "images/cars/suv.svg",
                 specs: {
                     motor: "2.0L Turbo 4-cilindros",
                     potencia: "261 HP",
@@ -368,7 +389,7 @@ const carBrands = [
     {
         id: 9,
         name: "Volkswagen",
-        logo: "🚘",
+        logo: "images/logos/volkswagen.svg",
         country: "Alemania",
         models: [
             {
@@ -376,6 +397,7 @@ const carBrands = [
                 year: 2024,
                 price: 23000,
                 description: "Sedán confiable y espacioso",
+                image: "images/cars/sedan.svg",
                 specs: {
                     motor: "1.4L Turbo 4-cilindros",
                     potencia: "147 HP",
@@ -390,6 +412,7 @@ const carBrands = [
                 year: 2024,
                 price: 29000,
                 description: "SUV compacto europeo",
+                image: "images/cars/suv.svg",
                 specs: {
                     motor: "2.0L Turbo 4-cilindros",
                     potencia: "184 HP",
@@ -404,7 +427,7 @@ const carBrands = [
     {
         id: 10,
         name: "Mazda",
-        logo: "🚗",
+        logo: "images/logos/mazda.svg",
         country: "Japón",
         models: [
             {
@@ -412,6 +435,7 @@ const carBrands = [
                 year: 2024,
                 price: 24000,
                 description: "Compacto deportivo y elegante",
+                image: "images/cars/sedan.svg",
                 specs: {
                     motor: "2.5L 4-cilindros",
                     potencia: "186 HP",
@@ -426,6 +450,7 @@ const carBrands = [
                 year: 2024,
                 price: 31000,
                 description: "SUV compacto premium",
+                image: "images/cars/suv.svg",
                 specs: {
                     motor: "2.5L Turbo 4-cilindros",
                     potencia: "227 HP",
@@ -440,7 +465,7 @@ const carBrands = [
     {
         id: 11,
         name: "Hyundai",
-        logo: "🚙",
+        logo: "images/logos/hyundai.svg",
         country: "Corea del Sur",
         models: [
             {
@@ -448,6 +473,7 @@ const carBrands = [
                 year: 2024,
                 price: 22000,
                 description: "Sedán moderno y eficiente",
+                image: "images/cars/sedan.svg",
                 specs: {
                     motor: "2.0L 4-cilindros",
                     potencia: "147 HP",
@@ -462,6 +488,7 @@ const carBrands = [
                 year: 2024,
                 price: 28000,
                 description: "SUV compacto atractivo",
+                image: "images/cars/suv.svg",
                 specs: {
                     motor: "2.5L 4-cilindros",
                     potencia: "187 HP",
@@ -476,7 +503,7 @@ const carBrands = [
     {
         id: 12,
         name: "Kia",
-        logo: "🚐",
+        logo: "images/logos/kia.svg",
         country: "Corea del Sur",
         models: [
             {
@@ -484,6 +511,7 @@ const carBrands = [
                 year: 2024,
                 price: 21000,
                 description: "Sedán económico y confiable",
+                image: "images/cars/sedan.svg",
                 specs: {
                     motor: "2.0L 4-cilindros",
                     potencia: "147 HP",
@@ -498,6 +526,7 @@ const carBrands = [
                 year: 2024,
                 price: 27000,
                 description: "SUV compacto moderno",
+                image: "images/cars/suv.svg",
                 specs: {
                     motor: "2.5L 4-cilindros",
                     potencia: "187 HP",
@@ -512,7 +541,7 @@ const carBrands = [
     {
         id: 13,
         name: "Subaru",
-        logo: "⭐",
+        logo: "images/logos/subaru.svg",
         country: "Japón",
         models: [
             {
@@ -520,6 +549,7 @@ const carBrands = [
                 year: 2024,
                 price: 23000,
                 description: "Compacto con tracción AWD",
+                image: "images/cars/sedan.svg",
                 specs: {
                     motor: "2.0L 4-cilindros",
                     potencia: "152 HP",
@@ -534,6 +564,7 @@ const carBrands = [
                 year: 2024,
                 price: 32000,
                 description: "Wagon aventurero",
+                image: "images/cars/suv.svg",
                 specs: {
                     motor: "2.5L 4-cilindros",
                     potencia: "182 HP",
@@ -548,7 +579,7 @@ const carBrands = [
     {
         id: 14,
         name: "Volvo",
-        logo: "🚗",
+        logo: "images/logos/volvo.svg",
         country: "Suecia",
         models: [
             {
@@ -556,6 +587,7 @@ const carBrands = [
                 year: 2024,
                 price: 43000,
                 description: "Sedán de lujo escandinavo",
+                image: "images/cars/sedan.svg",
                 specs: {
                     motor: "2.0L Turbo 4-cilindros",
                     potencia: "250 HP",
@@ -570,6 +602,7 @@ const carBrands = [
                 year: 2024,
                 price: 58000,
                 description: "SUV de lujo de 7 plazas",
+                image: "images/cars/suv.svg",
                 specs: {
                     motor: "2.0L Turbo+Supercharger 4-cilindros",
                     potencia: "316 HP",
@@ -584,7 +617,7 @@ const carBrands = [
     {
         id: 15,
         name: "Porsche",
-        logo: "🏁",
+        logo: "images/logos/porsche.svg",
         country: "Alemania",
         models: [
             {
@@ -592,6 +625,7 @@ const carBrands = [
                 year: 2024,
                 price: 115000,
                 description: "Icónico deportivo alemán",
+                image: "images/cars/sedan.svg",
                 specs: {
                     motor: "3.0L Twin-Turbo 6-cilindros",
                     potencia: "379 HP",
@@ -606,6 +640,7 @@ const carBrands = [
                 year: 2024,
                 price: 75000,
                 description: "SUV deportivo de lujo",
+                image: "images/cars/suv.svg",
                 specs: {
                     motor: "3.0L Turbo V6",
                     potencia: "335 HP",
@@ -620,7 +655,7 @@ const carBrands = [
     {
         id: 16,
         name: "Lexus",
-        logo: "💎",
+        logo: "images/logos/lexus.svg",
         country: "Japón",
         models: [
             {
@@ -628,6 +663,7 @@ const carBrands = [
                 year: 2024,
                 price: 44000,
                 description: "Sedán de lujo refinado",
+                image: "images/cars/sedan.svg",
                 specs: {
                     motor: "2.5L 4-cilindros",
                     potencia: "203 HP",
@@ -642,6 +678,7 @@ const carBrands = [
                 year: 2024,
                 price: 52000,
                 description: "SUV de lujo premium",
+                image: "images/cars/suv.svg",
                 specs: {
                     motor: "3.5L V6",
                     potencia: "295 HP",
@@ -656,7 +693,7 @@ const carBrands = [
     {
         id: 17,
         name: "Tesla",
-        logo: "⚡",
+        logo: "images/logos/tesla.svg",
         country: "Estados Unidos",
         models: [
             {
@@ -664,6 +701,7 @@ const carBrands = [
                 year: 2024,
                 price: 42000,
                 description: "Sedán eléctrico innovador",
+                image: "images/cars/sedan.svg",
                 specs: {
                     motor: "Motor eléctrico",
                     potencia: "283 HP",
@@ -678,6 +716,7 @@ const carBrands = [
                 year: 2024,
                 price: 50000,
                 description: "SUV eléctrico versátil",
+                image: "images/cars/suv.svg",
                 specs: {
                     motor: "Motor eléctrico dual",
                     potencia: "384 HP",
@@ -692,7 +731,7 @@ const carBrands = [
     {
         id: 18,
         name: "Jeep",
-        logo: "🚙",
+        logo: "images/logos/jeep.svg",
         country: "Estados Unidos",
         models: [
             {
@@ -700,6 +739,7 @@ const carBrands = [
                 year: 2024,
                 price: 35000,
                 description: "SUV todoterreno icónico",
+                image: "images/cars/sedan.svg",
                 specs: {
                     motor: "3.6L V6",
                     potencia: "285 HP",
@@ -714,6 +754,7 @@ const carBrands = [
                 year: 2024,
                 price: 42000,
                 description: "SUV de lujo capaz",
+                image: "images/cars/suv.svg",
                 specs: {
                     motor: "3.6L V6",
                     potencia: "293 HP",
@@ -728,7 +769,7 @@ const carBrands = [
     {
         id: 19,
         name: "Ram",
-        logo: "🐏",
+        logo: "images/logos/ram.svg",
         country: "Estados Unidos",
         models: [
             {
@@ -736,6 +777,7 @@ const carBrands = [
                 year: 2024,
                 price: 40000,
                 description: "Pickup full-size potente",
+                image: "images/cars/sedan.svg",
                 specs: {
                     motor: "3.6L V6",
                     potencia: "305 HP",
@@ -750,6 +792,7 @@ const carBrands = [
                 year: 2024,
                 price: 48000,
                 description: "Pickup heavy-duty",
+                image: "images/cars/truck.svg",
                 specs: {
                     motor: "6.4L V8",
                     potencia: "410 HP",
@@ -764,7 +807,7 @@ const carBrands = [
     {
         id: 20,
         name: "GMC",
-        logo: "🚚",
+        logo: "images/logos/gmc.svg",
         country: "Estados Unidos",
         models: [
             {
@@ -772,6 +815,7 @@ const carBrands = [
                 year: 2024,
                 price: 42000,
                 description: "Pickup premium robusta",
+                image: "images/cars/sedan.svg",
                 specs: {
                     motor: "5.3L V8",
                     potencia: "355 HP",
@@ -786,6 +830,7 @@ const carBrands = [
                 year: 2024,
                 price: 55000,
                 description: "SUV full-size espacioso",
+                image: "images/cars/suv.svg",
                 specs: {
                     motor: "5.3L V8",
                     potencia: "355 HP",
@@ -800,7 +845,7 @@ const carBrands = [
     {
         id: 21,
         name: "Alfa Romeo",
-        logo: "🏎️",
+        logo: "images/logos/alfaromeo.svg",
         country: "Italia",
         models: [
             {
@@ -808,6 +853,7 @@ const carBrands = [
                 year: 2024,
                 price: 46000,
                 description: "Sedán deportivo italiano",
+                image: "images/cars/sedan.svg",
                 specs: {
                     motor: "2.0L Turbo 4-cilindros",
                     potencia: "280 HP",
@@ -822,6 +868,7 @@ const carBrands = [
                 year: 2024,
                 price: 50000,
                 description: "SUV deportivo italiano",
+                image: "images/cars/suv.svg",
                 specs: {
                     motor: "2.0L Turbo 4-cilindros",
                     potencia: "280 HP",
@@ -836,7 +883,7 @@ const carBrands = [
     {
         id: 22,
         name: "Jaguar",
-        logo: "🐆",
+        logo: "images/logos/jaguar.svg",
         country: "Reino Unido",
         models: [
             {
@@ -844,6 +891,7 @@ const carBrands = [
                 year: 2024,
                 price: 47000,
                 description: "Sedán deportivo británico",
+                image: "images/cars/sedan.svg",
                 specs: {
                     motor: "2.0L Turbo 4-cilindros",
                     potencia: "247 HP",
@@ -858,6 +906,7 @@ const carBrands = [
                 year: 2024,
                 price: 52000,
                 description: "SUV deportivo elegante",
+                image: "images/cars/suv.svg",
                 specs: {
                     motor: "2.0L Turbo 4-cilindros",
                     potencia: "247 HP",
@@ -872,7 +921,7 @@ const carBrands = [
     {
         id: 23,
         name: "Land Rover",
-        logo: "🏔️",
+        logo: "images/logos/landrover.svg",
         country: "Reino Unido",
         models: [
             {
@@ -880,6 +929,7 @@ const carBrands = [
                 year: 2024,
                 price: 48000,
                 description: "SUV compacto de lujo",
+                image: "images/cars/sedan.svg",
                 specs: {
                     motor: "2.0L Turbo 4-cilindros",
                     potencia: "246 HP",
@@ -894,6 +944,7 @@ const carBrands = [
                 year: 2024,
                 price: 55000,
                 description: "SUV todoterreno legendario",
+                image: "images/cars/suv.svg",
                 specs: {
                     motor: "2.0L Turbo 4-cilindros",
                     potencia: "296 HP",
@@ -908,7 +959,7 @@ const carBrands = [
     {
         id: 24,
         name: "Mitsubishi",
-        logo: "🔺",
+        logo: "images/logos/mitsubishi.svg",
         country: "Japón",
         models: [
             {
@@ -916,6 +967,7 @@ const carBrands = [
                 year: 2024,
                 price: 28000,
                 description: "SUV familiar económico",
+                image: "images/cars/sedan.svg",
                 specs: {
                     motor: "2.5L 4-cilindros",
                     potencia: "181 HP",
@@ -930,6 +982,7 @@ const carBrands = [
                 year: 2024,
                 price: 26000,
                 description: "SUV compacto dinámico",
+                image: "images/cars/suv.svg",
                 specs: {
                     motor: "1.5L Turbo 4-cilindros",
                     potencia: "152 HP",
@@ -944,7 +997,7 @@ const carBrands = [
     {
         id: 25,
         name: "Peugeot",
-        logo: "🦁",
+        logo: "images/logos/peugeot.svg",
         country: "Francia",
         models: [
             {
@@ -952,6 +1005,7 @@ const carBrands = [
                 year: 2024,
                 price: 26000,
                 description: "Compacto europeo elegante",
+                image: "images/cars/sedan.svg",
                 specs: {
                     motor: "1.5L Turbo Diesel 4-cilindros",
                     potencia: "130 HP",
@@ -966,6 +1020,7 @@ const carBrands = [
                 year: 2024,
                 price: 32000,
                 description: "SUV compacto francés moderno",
+                image: "images/cars/suv.svg",
                 specs: {
                     motor: "1.6L Turbo 4-cilindros",
                     potencia: "180 HP",
@@ -1080,7 +1135,7 @@ function renderHomePage() {
 function renderBrandCard(brand) {
     return `
         <div class="brand-card" onclick="selectBrand(${brand.id})">
-            <div class="brand-logo">${brand.logo}</div>
+            <div class="brand-logo"><img src="${brand.logo}" alt="${brand.name} logo"></div>
             <h3>${brand.name}</h3>
             <p class="brand-country">${brand.country}</p>
             <p class="brand-models-count">${brand.models.length} modelos disponibles</p>
@@ -1105,7 +1160,7 @@ function renderBrandModelsPage() {
     return `
         <div class="page-header">
             <button class="back-button" onclick="goBack()">← Volver a Marcas</button>
-            <h1>${brand.logo} ${brand.name}</h1>
+            <h1><img src="${brand.logo}" alt="${brand.name}" style="height: 40px; vertical-align: middle; margin-right: 10px;"> ${brand.name}</h1>
             <p>${brand.country} - ${brand.models.length} modelos disponibles</p>
         </div>
         
@@ -1145,11 +1200,15 @@ function renderModelDetailsPage() {
     return `
         <div class="page-header">
             <button class="back-button" onclick="goBack()">← Volver a ${brand.name}</button>
-            <h1>${brand.logo} ${brand.name} ${model.name}</h1>
+            <h1><img src="${brand.logo}" alt="${brand.name}" style="height: 40px; vertical-align: middle; margin-right: 10px;"> ${brand.name} ${model.name}</h1>
             <p class="model-subtitle">${model.description}</p>
         </div>
         
         <div class="model-details-container">
+            <div class="model-image-container">
+                <img src="${model.image}" alt="${brand.name} ${model.name}">
+            </div>
+            
             <div class="model-main-info">
                 <div class="info-card">
                     <h2>Información General</h2>
@@ -1247,7 +1306,7 @@ function renderAdminPage() {
                 ${carBrands.map(brand => `
                     <div class="brand-admin-card">
                         <div class="brand-admin-header">
-                            <span class="brand-logo-small">${brand.logo}</span>
+                            <span class="brand-logo-small"><img src="${brand.logo}" alt="${brand.name}"></span>
                             <h3>${brand.name}</h3>
                             <span class="badge">${brand.models.length} modelos</span>
                         </div>

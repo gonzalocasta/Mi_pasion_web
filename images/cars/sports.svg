@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" width="400" height="200">
+  <defs>
+    <linearGradient id="sportsGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e53e3e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c53030;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Shadow -->
+  <ellipse cx="200" cy="185" rx="170" ry="12" fill="#000" opacity="0.2"/>
+  <!-- Car body - lower and sleeker -->
+  <path d="M85 135 L110 115 L155 105 L245 105 L290 115 L315 135 L335 145 L335 155 L325 160 L305 160 L295 150 L105 150 L95 160 L75 160 L65 155 L65 145 Z" 
+        fill="url(#sportsGrad)" stroke="#9b2c2c" stroke-width="2"/>
+  <!-- Windows - sleeker -->
+  <path d="M140 110 L160 115 L240 115 L260 110 L250 107 L170 107 Z" fill="#1a202c" opacity="0.7" stroke="#9b2c2c" stroke-width="1"/>
+  <!-- Wheels - wider -->
+  <ellipse cx="120" cy="160" rx="25" ry="22" fill="#1a202c" stroke="#4a5568" stroke-width="3"/>
+  <circle cx="120" cy="160" r="13" fill="#4a5568"/>
+  <ellipse cx="280" cy="160" rx="25" ry="22" fill="#1a202c" stroke="#4a5568" stroke-width="3"/>
+  <circle cx="280" cy="160" r="13" fill="#4a5568"/>
+  <!-- Details -->
+  <rect x="305" y="140" width="15" height="7" fill="#ff6b6b" rx="2"/>
+  <rect x="80" y="140" width="15" height="7" fill="#ffd93d" rx="2"/>
+  <!-- Spoiler -->
+  <rect x="290" y="100" width="40" height="4" fill="#9b2c2c" rx="1"/>
+</svg>
