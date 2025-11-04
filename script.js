@@ -990,14 +990,23 @@ function selectBrand(brandId) {
 }
 
 function selectModel(modelName) {
-    if (state.selectedBrand) {
-        const model = state.selectedBrand.models.find(m => m.name === modelName);
-        if (model) {
-            state.selectedModel = model;
-            state.currentPage = 'model-details';
-            render();
-        }
+    if (!state.selectedBrand) {
+        console.error('No brand selected');
+        navigateTo('home');
+        return;
     }
+    
+    const model = state.selectedBrand.models.find(m => m.name === modelName);
+    if (!model) {
+        console.error(`Model ${modelName} not found in ${state.selectedBrand.name}`);
+        state.currentPage = 'brand-models';
+        render();
+        return;
+    }
+    
+    state.selectedModel = model;
+    state.currentPage = 'model-details';
+    render();
 }
 
 function goBack() {
@@ -1081,8 +1090,14 @@ function renderBrandCard(brand) {
 
 function renderBrandModelsPage() {
     if (!state.selectedBrand) {
-        navigateTo('home');
-        return '';
+        console.error('No brand selected for models page');
+        return `
+            <div class="page-header">
+                <h1>Error</h1>
+                <p>No se ha seleccionado ninguna marca</p>
+                <button class="button" onclick="navigateTo('home')">Volver al Inicio</button>
+            </div>
+        `;
     }
     
     const brand = state.selectedBrand;
@@ -1114,8 +1129,14 @@ function renderModelCard(model) {
 
 function renderModelDetailsPage() {
     if (!state.selectedModel || !state.selectedBrand) {
-        navigateTo('home');
-        return '';
+        console.error('No model or brand selected for details page');
+        return `
+            <div class="page-header">
+                <h1>Error</h1>
+                <p>No se ha seleccionado ningún modelo</p>
+                <button class="button" onclick="navigateTo('home')">Volver al Inicio</button>
+            </div>
+        `;
     }
     
     const model = state.selectedModel;
