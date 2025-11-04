@@ -1,8 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-  <rect width="100" height="100" fill="#16482A"/>
-  <rect x="15" y="30" width="12" height="35" fill="#fff" rx="2"/>
-  <rect x="32" y="30" width="12" height="35" fill="#fff" rx="2"/>
-  <rect x="49" y="30" width="12" height="35" fill="#fff" rx="2"/>
-  <rect x="66" y="30" width="12" height="35" fill="#fff" rx="2"/>
-  <text x="50" y="80" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#fff" text-anchor="middle">JEEP</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <!-- Jeep grille logo -->
+  <g fill="#16482A">
+    <rect x="15" y="30" width="15" height="45" rx="2"/>
+    <rect x="35" y="30" width="15" height="45" rx="2"/>
+    <rect x="55" y="30" width="15" height="45" rx="2"/>
+    <rect x="75" y="30" width="15" height="45" rx="2"/>
+    <rect x="95" y="30" width="15" height="45" rx="2"/>
+  </g>
+  <text x="60" y="100" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#16482A" text-anchor="middle">JEEP</text>
 </svg>
