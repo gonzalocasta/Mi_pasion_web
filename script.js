@@ -1,131 +1,1025 @@
 // SPA Application State
 const state = {
-    cars: [],
     currentPage: 'home',
-    editingCar: null
+    selectedBrand: null,
+    selectedModel: null
 };
 
-// Mock data (in case API is not available)
-const mockCars = [
+// Car Brands Data with Models and Specifications
+const carBrands = [
     {
         id: 1,
-        make: "Toyota",
-        model: "Camry",
-        year: 2020,
-        price: 24000,
-        description: "Un sedán confiable y eficiente en combustible"
+        name: "Toyota",
+        logo: "🚗",
+        country: "Japón",
+        models: [
+            {
+                name: "Camry",
+                year: 2024,
+                price: 28000,
+                description: "Sedán elegante y confiable",
+                specs: {
+                    motor: "2.5L 4-cilindros",
+                    potencia: "203 HP",
+                    transmision: "Automática 8 velocidades",
+                    traccion: "Delantera",
+                    consumo: "7.8 L/100km",
+                    aceleracion: "8.3 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "Corolla",
+                year: 2024,
+                price: 22000,
+                description: "Compacto eficiente y económico",
+                specs: {
+                    motor: "1.8L 4-cilindros",
+                    potencia: "139 HP",
+                    transmision: "CVT",
+                    traccion: "Delantera",
+                    consumo: "6.5 L/100km",
+                    aceleracion: "9.8 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "RAV4",
+                year: 2024,
+                price: 32000,
+                description: "SUV compacto versátil",
+                specs: {
+                    motor: "2.5L 4-cilindros",
+                    potencia: "203 HP",
+                    transmision: "Automática 8 velocidades",
+                    traccion: "AWD",
+                    consumo: "8.2 L/100km",
+                    aceleracion: "8.5 segundos (0-100 km/h)"
+                }
+            }
+        ]
     },
     {
         id: 2,
-        make: "Honda",
-        model: "Accord",
-        year: 2021,
-        price: 26000,
-        description: "Sedán elegante con tecnología avanzada"
+        name: "Honda",
+        logo: "🚙",
+        country: "Japón",
+        models: [
+            {
+                name: "Accord",
+                year: 2024,
+                price: 29000,
+                description: "Sedán premium con tecnología avanzada",
+                specs: {
+                    motor: "1.5L Turbo 4-cilindros",
+                    potencia: "192 HP",
+                    transmision: "CVT",
+                    traccion: "Delantera",
+                    consumo: "7.4 L/100km",
+                    aceleracion: "7.9 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "Civic",
+                year: 2024,
+                price: 24000,
+                description: "Compacto deportivo y eficiente",
+                specs: {
+                    motor: "2.0L 4-cilindros",
+                    potencia: "158 HP",
+                    transmision: "CVT",
+                    traccion: "Delantera",
+                    consumo: "7.0 L/100km",
+                    aceleracion: "8.8 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "CR-V",
+                year: 2024,
+                price: 33000,
+                description: "SUV familiar espacioso",
+                specs: {
+                    motor: "1.5L Turbo 4-cilindros",
+                    potencia: "190 HP",
+                    transmision: "CVT",
+                    traccion: "AWD",
+                    consumo: "8.0 L/100km",
+                    aceleracion: "8.2 segundos (0-100 km/h)"
+                }
+            }
+        ]
     },
     {
         id: 3,
-        make: "Ford",
-        model: "Mustang",
-        year: 2019,
-        price: 30000,
-        description: "Potente deportivo americano icónico"
+        name: "Ford",
+        logo: "🚐",
+        country: "Estados Unidos",
+        models: [
+            {
+                name: "Mustang",
+                year: 2024,
+                price: 35000,
+                description: "Icónico muscle car americano",
+                specs: {
+                    motor: "2.3L EcoBoost 4-cilindros",
+                    potencia: "310 HP",
+                    transmision: "Manual 6 velocidades",
+                    traccion: "Trasera",
+                    consumo: "10.2 L/100km",
+                    aceleracion: "5.3 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "F-150",
+                year: 2024,
+                price: 38000,
+                description: "Pickup resistente y capaz",
+                specs: {
+                    motor: "3.5L V6 EcoBoost",
+                    potencia: "400 HP",
+                    transmision: "Automática 10 velocidades",
+                    traccion: "4WD",
+                    consumo: "12.5 L/100km",
+                    aceleracion: "6.1 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "Explorer",
+                year: 2024,
+                price: 36000,
+                description: "SUV de tres filas familiar",
+                specs: {
+                    motor: "2.3L EcoBoost 4-cilindros",
+                    potencia: "300 HP",
+                    transmision: "Automática 10 velocidades",
+                    traccion: "AWD",
+                    consumo: "11.0 L/100km",
+                    aceleracion: "7.2 segundos (0-100 km/h)"
+                }
+            }
+        ]
     },
     {
         id: 4,
-        make: "Chevrolet",
-        model: "Malibu",
-        year: 2022,
-        price: 22000,
-        description: "Sedán espacioso y cómodo para familias"
+        name: "Chevrolet",
+        logo: "🚕",
+        country: "Estados Unidos",
+        models: [
+            {
+                name: "Malibu",
+                year: 2024,
+                price: 25000,
+                description: "Sedán espacioso y cómodo",
+                specs: {
+                    motor: "1.5L Turbo 4-cilindros",
+                    potencia: "160 HP",
+                    transmision: "CVT",
+                    traccion: "Delantera",
+                    consumo: "7.5 L/100km",
+                    aceleracion: "8.7 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "Camaro",
+                year: 2024,
+                price: 32000,
+                description: "Deportivo americano potente",
+                specs: {
+                    motor: "2.0L Turbo 4-cilindros",
+                    potencia: "275 HP",
+                    transmision: "Manual 6 velocidades",
+                    traccion: "Trasera",
+                    consumo: "10.0 L/100km",
+                    aceleracion: "5.5 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "Equinox",
+                year: 2024,
+                price: 28000,
+                description: "SUV compacto moderno",
+                specs: {
+                    motor: "1.5L Turbo 4-cilindros",
+                    potencia: "175 HP",
+                    transmision: "Automática 6 velocidades",
+                    traccion: "AWD",
+                    consumo: "8.5 L/100km",
+                    aceleracion: "8.9 segundos (0-100 km/h)"
+                }
+            }
+        ]
     },
     {
         id: 5,
-        make: "Nissan",
-        model: "Altima",
-        year: 2021,
-        price: 25000,
-        description: "Sedán moderno con excelente rendimiento"
+        name: "Nissan",
+        logo: "🚖",
+        country: "Japón",
+        models: [
+            {
+                name: "Altima",
+                year: 2024,
+                price: 27000,
+                description: "Sedán moderno con excelente rendimiento",
+                specs: {
+                    motor: "2.5L 4-cilindros",
+                    potencia: "188 HP",
+                    transmision: "CVT",
+                    traccion: "Delantera",
+                    consumo: "7.6 L/100km",
+                    aceleracion: "8.5 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "Sentra",
+                year: 2024,
+                price: 21000,
+                description: "Compacto eficiente y elegante",
+                specs: {
+                    motor: "2.0L 4-cilindros",
+                    potencia: "149 HP",
+                    transmision: "CVT",
+                    traccion: "Delantera",
+                    consumo: "6.8 L/100km",
+                    aceleracion: "9.2 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "Rogue",
+                year: 2024,
+                price: 30000,
+                description: "SUV compacto cómodo",
+                specs: {
+                    motor: "2.5L 4-cilindros",
+                    potencia: "181 HP",
+                    transmision: "CVT",
+                    traccion: "AWD",
+                    consumo: "8.3 L/100km",
+                    aceleracion: "9.0 segundos (0-100 km/h)"
+                }
+            }
+        ]
+    },
+    {
+        id: 6,
+        name: "BMW",
+        logo: "🏎️",
+        country: "Alemania",
+        models: [
+            {
+                name: "Serie 3",
+                year: 2024,
+                price: 45000,
+                description: "Sedán deportivo de lujo",
+                specs: {
+                    motor: "2.0L Turbo 4-cilindros",
+                    potencia: "255 HP",
+                    transmision: "Automática 8 velocidades",
+                    traccion: "Trasera",
+                    consumo: "8.5 L/100km",
+                    aceleracion: "5.8 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "X5",
+                year: 2024,
+                price: 62000,
+                description: "SUV de lujo espacioso",
+                specs: {
+                    motor: "3.0L Turbo 6-cilindros",
+                    potencia: "335 HP",
+                    transmision: "Automática 8 velocidades",
+                    traccion: "AWD",
+                    consumo: "10.5 L/100km",
+                    aceleracion: "5.5 segundos (0-100 km/h)"
+                }
+            }
+        ]
+    },
+    {
+        id: 7,
+        name: "Mercedes-Benz",
+        logo: "⭐",
+        country: "Alemania",
+        models: [
+            {
+                name: "Clase C",
+                year: 2024,
+                price: 48000,
+                description: "Sedán de lujo elegante",
+                specs: {
+                    motor: "2.0L Turbo 4-cilindros",
+                    potencia: "255 HP",
+                    transmision: "Automática 9 velocidades",
+                    traccion: "Trasera",
+                    consumo: "8.3 L/100km",
+                    aceleracion: "6.0 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "GLE",
+                year: 2024,
+                price: 65000,
+                description: "SUV de lujo premium",
+                specs: {
+                    motor: "3.0L Turbo 6-cilindros",
+                    potencia: "362 HP",
+                    transmision: "Automática 9 velocidades",
+                    traccion: "AWD",
+                    consumo: "10.8 L/100km",
+                    aceleracion: "5.7 segundos (0-100 km/h)"
+                }
+            }
+        ]
+    },
+    {
+        id: 8,
+        name: "Audi",
+        logo: "🔷",
+        country: "Alemania",
+        models: [
+            {
+                name: "A4",
+                year: 2024,
+                price: 46000,
+                description: "Sedán premium tecnológico",
+                specs: {
+                    motor: "2.0L Turbo 4-cilindros",
+                    potencia: "261 HP",
+                    transmision: "Automática 7 velocidades",
+                    traccion: "Quattro AWD",
+                    consumo: "8.4 L/100km",
+                    aceleracion: "5.9 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "Q5",
+                year: 2024,
+                price: 52000,
+                description: "SUV premium versátil",
+                specs: {
+                    motor: "2.0L Turbo 4-cilindros",
+                    potencia: "261 HP",
+                    transmision: "Automática 7 velocidades",
+                    traccion: "Quattro AWD",
+                    consumo: "9.2 L/100km",
+                    aceleracion: "6.3 segundos (0-100 km/h)"
+                }
+            }
+        ]
+    },
+    {
+        id: 9,
+        name: "Volkswagen",
+        logo: "🚘",
+        country: "Alemania",
+        models: [
+            {
+                name: "Jetta",
+                year: 2024,
+                price: 23000,
+                description: "Sedán confiable y espacioso",
+                specs: {
+                    motor: "1.4L Turbo 4-cilindros",
+                    potencia: "147 HP",
+                    transmision: "Automática 8 velocidades",
+                    traccion: "Delantera",
+                    consumo: "7.2 L/100km",
+                    aceleracion: "9.1 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "Tiguan",
+                year: 2024,
+                price: 29000,
+                description: "SUV compacto europeo",
+                specs: {
+                    motor: "2.0L Turbo 4-cilindros",
+                    potencia: "184 HP",
+                    transmision: "Automática 8 velocidades",
+                    traccion: "AWD",
+                    consumo: "8.8 L/100km",
+                    aceleracion: "8.4 segundos (0-100 km/h)"
+                }
+            }
+        ]
+    },
+    {
+        id: 10,
+        name: "Mazda",
+        logo: "🚗",
+        country: "Japón",
+        models: [
+            {
+                name: "Mazda3",
+                year: 2024,
+                price: 24000,
+                description: "Compacto deportivo y elegante",
+                specs: {
+                    motor: "2.5L 4-cilindros",
+                    potencia: "186 HP",
+                    transmision: "Automática 6 velocidades",
+                    traccion: "Delantera",
+                    consumo: "7.5 L/100km",
+                    aceleracion: "8.3 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "CX-5",
+                year: 2024,
+                price: 31000,
+                description: "SUV compacto premium",
+                specs: {
+                    motor: "2.5L Turbo 4-cilindros",
+                    potencia: "227 HP",
+                    transmision: "Automática 6 velocidades",
+                    traccion: "AWD",
+                    consumo: "9.0 L/100km",
+                    aceleracion: "7.5 segundos (0-100 km/h)"
+                }
+            }
+        ]
+    },
+    {
+        id: 11,
+        name: "Hyundai",
+        logo: "🚙",
+        country: "Corea del Sur",
+        models: [
+            {
+                name: "Elantra",
+                year: 2024,
+                price: 22000,
+                description: "Sedán moderno y eficiente",
+                specs: {
+                    motor: "2.0L 4-cilindros",
+                    potencia: "147 HP",
+                    transmision: "CVT",
+                    traccion: "Delantera",
+                    consumo: "7.1 L/100km",
+                    aceleracion: "9.0 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "Tucson",
+                year: 2024,
+                price: 28000,
+                description: "SUV compacto atractivo",
+                specs: {
+                    motor: "2.5L 4-cilindros",
+                    potencia: "187 HP",
+                    transmision: "Automática 8 velocidades",
+                    traccion: "AWD",
+                    consumo: "8.6 L/100km",
+                    aceleracion: "8.7 segundos (0-100 km/h)"
+                }
+            }
+        ]
+    },
+    {
+        id: 12,
+        name: "Kia",
+        logo: "🚐",
+        country: "Corea del Sur",
+        models: [
+            {
+                name: "Forte",
+                year: 2024,
+                price: 21000,
+                description: "Sedán económico y confiable",
+                specs: {
+                    motor: "2.0L 4-cilindros",
+                    potencia: "147 HP",
+                    transmision: "CVT",
+                    traccion: "Delantera",
+                    consumo: "7.0 L/100km",
+                    aceleracion: "8.9 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "Sportage",
+                year: 2024,
+                price: 27000,
+                description: "SUV compacto moderno",
+                specs: {
+                    motor: "2.5L 4-cilindros",
+                    potencia: "187 HP",
+                    transmision: "Automática 8 velocidades",
+                    traccion: "AWD",
+                    consumo: "8.7 L/100km",
+                    aceleracion: "8.6 segundos (0-100 km/h)"
+                }
+            }
+        ]
+    },
+    {
+        id: 13,
+        name: "Subaru",
+        logo: "⭐",
+        country: "Japón",
+        models: [
+            {
+                name: "Impreza",
+                year: 2024,
+                price: 23000,
+                description: "Compacto con tracción AWD",
+                specs: {
+                    motor: "2.0L 4-cilindros",
+                    potencia: "152 HP",
+                    transmision: "CVT",
+                    traccion: "AWD",
+                    consumo: "7.8 L/100km",
+                    aceleracion: "9.3 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "Outback",
+                year: 2024,
+                price: 32000,
+                description: "Wagon aventurero",
+                specs: {
+                    motor: "2.5L 4-cilindros",
+                    potencia: "182 HP",
+                    transmision: "CVT",
+                    traccion: "AWD",
+                    consumo: "8.9 L/100km",
+                    aceleracion: "8.7 segundos (0-100 km/h)"
+                }
+            }
+        ]
+    },
+    {
+        id: 14,
+        name: "Volvo",
+        logo: "🚗",
+        country: "Suecia",
+        models: [
+            {
+                name: "S60",
+                year: 2024,
+                price: 43000,
+                description: "Sedán de lujo escandinavo",
+                specs: {
+                    motor: "2.0L Turbo 4-cilindros",
+                    potencia: "250 HP",
+                    transmision: "Automática 8 velocidades",
+                    traccion: "AWD",
+                    consumo: "8.8 L/100km",
+                    aceleracion: "6.4 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "XC90",
+                year: 2024,
+                price: 58000,
+                description: "SUV de lujo de 7 plazas",
+                specs: {
+                    motor: "2.0L Turbo+Supercharger 4-cilindros",
+                    potencia: "316 HP",
+                    transmision: "Automática 8 velocidades",
+                    traccion: "AWD",
+                    consumo: "10.2 L/100km",
+                    aceleracion: "6.5 segundos (0-100 km/h)"
+                }
+            }
+        ]
+    },
+    {
+        id: 15,
+        name: "Porsche",
+        logo: "🏁",
+        country: "Alemania",
+        models: [
+            {
+                name: "911",
+                year: 2024,
+                price: 115000,
+                description: "Icónico deportivo alemán",
+                specs: {
+                    motor: "3.0L Twin-Turbo 6-cilindros",
+                    potencia: "379 HP",
+                    transmision: "PDK 8 velocidades",
+                    traccion: "Trasera",
+                    consumo: "11.5 L/100km",
+                    aceleracion: "4.2 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "Cayenne",
+                year: 2024,
+                price: 75000,
+                description: "SUV deportivo de lujo",
+                specs: {
+                    motor: "3.0L Turbo V6",
+                    potencia: "335 HP",
+                    transmision: "Automática 8 velocidades",
+                    traccion: "AWD",
+                    consumo: "11.8 L/100km",
+                    aceleracion: "6.2 segundos (0-100 km/h)"
+                }
+            }
+        ]
+    },
+    {
+        id: 16,
+        name: "Lexus",
+        logo: "💎",
+        country: "Japón",
+        models: [
+            {
+                name: "ES",
+                year: 2024,
+                price: 44000,
+                description: "Sedán de lujo refinado",
+                specs: {
+                    motor: "2.5L 4-cilindros",
+                    potencia: "203 HP",
+                    transmision: "Automática 8 velocidades",
+                    traccion: "Delantera",
+                    consumo: "8.0 L/100km",
+                    aceleracion: "8.9 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "RX",
+                year: 2024,
+                price: 52000,
+                description: "SUV de lujo premium",
+                specs: {
+                    motor: "3.5L V6",
+                    potencia: "295 HP",
+                    transmision: "Automática 8 velocidades",
+                    traccion: "AWD",
+                    consumo: "10.0 L/100km",
+                    aceleracion: "7.7 segundos (0-100 km/h)"
+                }
+            }
+        ]
+    },
+    {
+        id: 17,
+        name: "Tesla",
+        logo: "⚡",
+        country: "Estados Unidos",
+        models: [
+            {
+                name: "Model 3",
+                year: 2024,
+                price: 42000,
+                description: "Sedán eléctrico innovador",
+                specs: {
+                    motor: "Motor eléctrico",
+                    potencia: "283 HP",
+                    transmision: "Automática 1 velocidad",
+                    traccion: "Trasera",
+                    consumo: "14 kWh/100km",
+                    aceleracion: "5.8 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "Model Y",
+                year: 2024,
+                price: 50000,
+                description: "SUV eléctrico versátil",
+                specs: {
+                    motor: "Motor eléctrico dual",
+                    potencia: "384 HP",
+                    transmision: "Automática 1 velocidad",
+                    traccion: "AWD",
+                    consumo: "16 kWh/100km",
+                    aceleracion: "5.0 segundos (0-100 km/h)"
+                }
+            }
+        ]
+    },
+    {
+        id: 18,
+        name: "Jeep",
+        logo: "🚙",
+        country: "Estados Unidos",
+        models: [
+            {
+                name: "Wrangler",
+                year: 2024,
+                price: 35000,
+                description: "SUV todoterreno icónico",
+                specs: {
+                    motor: "3.6L V6",
+                    potencia: "285 HP",
+                    transmision: "Automática 8 velocidades",
+                    traccion: "4WD",
+                    consumo: "11.5 L/100km",
+                    aceleracion: "7.4 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "Grand Cherokee",
+                year: 2024,
+                price: 42000,
+                description: "SUV de lujo capaz",
+                specs: {
+                    motor: "3.6L V6",
+                    potencia: "293 HP",
+                    transmision: "Automática 8 velocidades",
+                    traccion: "4WD",
+                    consumo: "11.0 L/100km",
+                    aceleracion: "7.2 segundos (0-100 km/h)"
+                }
+            }
+        ]
+    },
+    {
+        id: 19,
+        name: "Ram",
+        logo: "🐏",
+        country: "Estados Unidos",
+        models: [
+            {
+                name: "1500",
+                year: 2024,
+                price: 40000,
+                description: "Pickup full-size potente",
+                specs: {
+                    motor: "3.6L V6",
+                    potencia: "305 HP",
+                    transmision: "Automática 8 velocidades",
+                    traccion: "4WD",
+                    consumo: "13.5 L/100km",
+                    aceleracion: "7.5 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "2500",
+                year: 2024,
+                price: 48000,
+                description: "Pickup heavy-duty",
+                specs: {
+                    motor: "6.4L V8",
+                    potencia: "410 HP",
+                    transmision: "Automática 8 velocidades",
+                    traccion: "4WD",
+                    consumo: "15.5 L/100km",
+                    aceleracion: "8.2 segundos (0-100 km/h)"
+                }
+            }
+        ]
+    },
+    {
+        id: 20,
+        name: "GMC",
+        logo: "🚚",
+        country: "Estados Unidos",
+        models: [
+            {
+                name: "Sierra",
+                year: 2024,
+                price: 42000,
+                description: "Pickup premium robusta",
+                specs: {
+                    motor: "5.3L V8",
+                    potencia: "355 HP",
+                    transmision: "Automática 10 velocidades",
+                    traccion: "4WD",
+                    consumo: "13.0 L/100km",
+                    aceleracion: "6.8 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "Yukon",
+                year: 2024,
+                price: 55000,
+                description: "SUV full-size espacioso",
+                specs: {
+                    motor: "5.3L V8",
+                    potencia: "355 HP",
+                    transmision: "Automática 10 velocidades",
+                    traccion: "4WD",
+                    consumo: "13.5 L/100km",
+                    aceleracion: "7.1 segundos (0-100 km/h)"
+                }
+            }
+        ]
+    },
+    {
+        id: 21,
+        name: "Alfa Romeo",
+        logo: "🏎️",
+        country: "Italia",
+        models: [
+            {
+                name: "Giulia",
+                year: 2024,
+                price: 46000,
+                description: "Sedán deportivo italiano",
+                specs: {
+                    motor: "2.0L Turbo 4-cilindros",
+                    potencia: "280 HP",
+                    transmision: "Automática 8 velocidades",
+                    traccion: "Trasera",
+                    consumo: "9.2 L/100km",
+                    aceleracion: "5.5 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "Stelvio",
+                year: 2024,
+                price: 50000,
+                description: "SUV deportivo italiano",
+                specs: {
+                    motor: "2.0L Turbo 4-cilindros",
+                    potencia: "280 HP",
+                    transmision: "Automática 8 velocidades",
+                    traccion: "AWD",
+                    consumo: "9.8 L/100km",
+                    aceleracion: "5.7 segundos (0-100 km/h)"
+                }
+            }
+        ]
+    },
+    {
+        id: 22,
+        name: "Jaguar",
+        logo: "🐆",
+        country: "Reino Unido",
+        models: [
+            {
+                name: "XE",
+                year: 2024,
+                price: 47000,
+                description: "Sedán deportivo británico",
+                specs: {
+                    motor: "2.0L Turbo 4-cilindros",
+                    potencia: "247 HP",
+                    transmision: "Automática 8 velocidades",
+                    traccion: "Trasera",
+                    consumo: "8.9 L/100km",
+                    aceleracion: "6.6 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "F-PACE",
+                year: 2024,
+                price: 52000,
+                description: "SUV deportivo elegante",
+                specs: {
+                    motor: "2.0L Turbo 4-cilindros",
+                    potencia: "247 HP",
+                    transmision: "Automática 8 velocidades",
+                    traccion: "AWD",
+                    consumo: "9.5 L/100km",
+                    aceleracion: "6.8 segundos (0-100 km/h)"
+                }
+            }
+        ]
+    },
+    {
+        id: 23,
+        name: "Land Rover",
+        logo: "🏔️",
+        country: "Reino Unido",
+        models: [
+            {
+                name: "Range Rover Evoque",
+                year: 2024,
+                price: 48000,
+                description: "SUV compacto de lujo",
+                specs: {
+                    motor: "2.0L Turbo 4-cilindros",
+                    potencia: "246 HP",
+                    transmision: "Automática 9 velocidades",
+                    traccion: "AWD",
+                    consumo: "9.5 L/100km",
+                    aceleracion: "7.1 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "Defender",
+                year: 2024,
+                price: 55000,
+                description: "SUV todoterreno legendario",
+                specs: {
+                    motor: "2.0L Turbo 4-cilindros",
+                    potencia: "296 HP",
+                    transmision: "Automática 8 velocidades",
+                    traccion: "4WD",
+                    consumo: "10.5 L/100km",
+                    aceleracion: "7.7 segundos (0-100 km/h)"
+                }
+            }
+        ]
+    },
+    {
+        id: 24,
+        name: "Mitsubishi",
+        logo: "🔺",
+        country: "Japón",
+        models: [
+            {
+                name: "Outlander",
+                year: 2024,
+                price: 28000,
+                description: "SUV familiar económico",
+                specs: {
+                    motor: "2.5L 4-cilindros",
+                    potencia: "181 HP",
+                    transmision: "CVT",
+                    traccion: "AWD",
+                    consumo: "8.8 L/100km",
+                    aceleracion: "9.5 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "Eclipse Cross",
+                year: 2024,
+                price: 26000,
+                description: "SUV compacto dinámico",
+                specs: {
+                    motor: "1.5L Turbo 4-cilindros",
+                    potencia: "152 HP",
+                    transmision: "CVT",
+                    traccion: "AWD",
+                    consumo: "8.5 L/100km",
+                    aceleracion: "10.1 segundos (0-100 km/h)"
+                }
+            }
+        ]
+    },
+    {
+        id: 25,
+        name: "Peugeot",
+        logo: "🦁",
+        country: "Francia",
+        models: [
+            {
+                name: "308",
+                year: 2024,
+                price: 26000,
+                description: "Compacto europeo elegante",
+                specs: {
+                    motor: "1.5L Turbo Diesel 4-cilindros",
+                    potencia: "130 HP",
+                    transmision: "Automática 8 velocidades",
+                    traccion: "Delantera",
+                    consumo: "5.5 L/100km",
+                    aceleracion: "10.5 segundos (0-100 km/h)"
+                }
+            },
+            {
+                name: "3008",
+                year: 2024,
+                price: 32000,
+                description: "SUV compacto francés moderno",
+                specs: {
+                    motor: "1.6L Turbo 4-cilindros",
+                    potencia: "180 HP",
+                    transmision: "Automática 8 velocidades",
+                    traccion: "Delantera",
+                    consumo: "7.8 L/100km",
+                    aceleracion: "8.9 segundos (0-100 km/h)"
+                }
+            }
+        ]
     }
 ];
 
-// API Configuration
-// To use with json-server, update this URL to match your server
-// For production, replace with your backend API endpoint
-const API_URL = 'http://localhost:3001/cars';
-
-// API Functions
-async function fetchCars() {
-    try {
-        const response = await fetch(API_URL);
-        if (!response.ok) throw new Error('API not available');
-        const data = await response.json();
-        state.cars = data;
-    } catch (error) {
-        console.log('Using mock data:', error.message);
-        state.cars = [...mockCars];
+// Navigation helpers
+function selectBrand(brandId) {
+    const brand = carBrands.find(b => b.id === brandId);
+    if (brand) {
+        state.selectedBrand = brand;
+        state.currentPage = 'brand-models';
+        render();
     }
 }
 
-async function addCar(carData) {
-    try {
-        const response = await fetch(API_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(carData)
-        });
-        if (!response.ok) throw new Error('Failed to add car');
-        return await response.json();
-    } catch (error) {
-        // Fallback to mock data
-        const newCar = {
-            ...carData,
-            id: state.cars.length > 0 ? Math.max(...state.cars.map(c => c.id)) + 1 : 1
-        };
-        state.cars.push(newCar);
-        return newCar;
-    }
-}
-
-async function updateCar(carData) {
-    try {
-        const response = await fetch(`${API_URL}/${carData.id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(carData)
-        });
-        if (!response.ok) throw new Error('Failed to update car');
-        return await response.json();
-    } catch (error) {
-        // Fallback to mock data
-        const index = state.cars.findIndex(c => c.id === carData.id);
-        if (index !== -1) {
-            state.cars[index] = carData;
+function selectModel(modelName) {
+    if (state.selectedBrand) {
+        const model = state.selectedBrand.models.find(m => m.name === modelName);
+        if (model) {
+            state.selectedModel = model;
+            state.currentPage = 'model-details';
+            render();
         }
-        return carData;
     }
 }
 
-async function deleteCar(id) {
-    try {
-        const response = await fetch(`${API_URL}/${id}`, {
-            method: 'DELETE'
-        });
-        if (!response.ok) throw new Error('Failed to delete car');
-    } catch (error) {
-        console.log('Deleting from mock data:', error.message);
+function goBack() {
+    if (state.currentPage === 'model-details') {
+        state.selectedModel = null;
+        state.currentPage = 'brand-models';
+    } else if (state.currentPage === 'brand-models') {
+        state.selectedBrand = null;
+        state.currentPage = 'home';
     }
-    // Always remove from local state
-    state.cars = state.cars.filter(car => car.id !== id);
+    render();
 }
 
 // Router
 function navigateTo(page) {
     state.currentPage = page;
+    
+    // Reset navigation state when going to home
+    if (page === 'home') {
+        state.selectedBrand = null;
+        state.selectedModel = null;
+    }
     
     // Update active nav link
     document.querySelectorAll('.nav-link').forEach(link => {
@@ -147,9 +1041,14 @@ function render() {
         case 'home':
             app.innerHTML = renderHomePage();
             break;
+        case 'brand-models':
+            app.innerHTML = renderBrandModelsPage();
+            break;
+        case 'model-details':
+            app.innerHTML = renderModelDetailsPage();
+            break;
         case 'admin':
             app.innerHTML = renderAdminPage();
-            attachAdminEventListeners();
             break;
         default:
             app.innerHTML = renderHomePage();
@@ -160,29 +1059,145 @@ function renderHomePage() {
     return `
         <div class="page-header">
             <h1>Bienvenido a Mi Pasión</h1>
-            <p>Descubre nuestra increíble colección de autos</p>
+            <p>Descubre nuestra colección de ${carBrands.length} marcas de autos</p>
         </div>
         
-        ${state.cars.length === 0 ? `
-            <div class="empty-state">
-                <h2>No hay autos disponibles</h2>
-                <p>Visita el panel de administración para agregar autos</p>
-            </div>
-        ` : `
-            <div class="car-grid">
-                ${state.cars.map(car => renderCarCard(car)).join('')}
-            </div>
-        `}
+        <div class="brands-grid">
+            ${carBrands.map(brand => renderBrandCard(brand)).join('')}
+        </div>
     `;
 }
 
-function renderCarCard(car) {
+function renderBrandCard(brand) {
     return `
-        <div class="car-card">
-            <h3>${car.make} ${car.model}</h3>
-            <p class="car-info"><strong>Año:</strong> ${car.year}</p>
-            <p class="car-info"><strong>Descripción:</strong> ${car.description || 'Sin descripción'}</p>
-            <p class="car-price">$${car.price.toLocaleString()}</p>
+        <div class="brand-card" onclick="selectBrand(${brand.id})">
+            <div class="brand-logo">${brand.logo}</div>
+            <h3>${brand.name}</h3>
+            <p class="brand-country">${brand.country}</p>
+            <p class="brand-models-count">${brand.models.length} modelos disponibles</p>
+        </div>
+    `;
+}
+
+function renderBrandModelsPage() {
+    if (!state.selectedBrand) {
+        navigateTo('home');
+        return '';
+    }
+    
+    const brand = state.selectedBrand;
+    
+    return `
+        <div class="page-header">
+            <button class="back-button" onclick="goBack()">← Volver a Marcas</button>
+            <h1>${brand.logo} ${brand.name}</h1>
+            <p>${brand.country} - ${brand.models.length} modelos disponibles</p>
+        </div>
+        
+        <div class="models-grid">
+            ${brand.models.map(model => renderModelCard(model)).join('')}
+        </div>
+    `;
+}
+
+function renderModelCard(model) {
+    return `
+        <div class="model-card" onclick="selectModel('${model.name}')">
+            <h3>${model.name}</h3>
+            <p class="model-year">Año ${model.year}</p>
+            <p class="model-description">${model.description}</p>
+            <p class="model-price">$${model.price.toLocaleString()}</p>
+            <button class="button button-small">Ver Especificaciones →</button>
+        </div>
+    `;
+}
+
+function renderModelDetailsPage() {
+    if (!state.selectedModel || !state.selectedBrand) {
+        navigateTo('home');
+        return '';
+    }
+    
+    const model = state.selectedModel;
+    const brand = state.selectedBrand;
+    
+    return `
+        <div class="page-header">
+            <button class="back-button" onclick="goBack()">← Volver a ${brand.name}</button>
+            <h1>${brand.logo} ${brand.name} ${model.name}</h1>
+            <p class="model-subtitle">${model.description}</p>
+        </div>
+        
+        <div class="model-details-container">
+            <div class="model-main-info">
+                <div class="info-card">
+                    <h2>Información General</h2>
+                    <div class="info-row">
+                        <span class="info-label">Marca:</span>
+                        <span class="info-value">${brand.name}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Modelo:</span>
+                        <span class="info-value">${model.name}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Año:</span>
+                        <span class="info-value">${model.year}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Precio:</span>
+                        <span class="info-value price-highlight">$${model.price.toLocaleString()}</span>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h2>Especificaciones Técnicas</h2>
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <div class="spec-icon">⚙️</div>
+                            <div class="spec-info">
+                                <span class="spec-label">Motor</span>
+                                <span class="spec-value">${model.specs.motor}</span>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon">💪</div>
+                            <div class="spec-info">
+                                <span class="spec-label">Potencia</span>
+                                <span class="spec-value">${model.specs.potencia}</span>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon">🔄</div>
+                            <div class="spec-info">
+                                <span class="spec-label">Transmisión</span>
+                                <span class="spec-value">${model.specs.transmision}</span>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon">🚗</div>
+                            <div class="spec-info">
+                                <span class="spec-label">Tracción</span>
+                                <span class="spec-value">${model.specs.traccion}</span>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon">⛽</div>
+                            <div class="spec-info">
+                                <span class="spec-label">Consumo</span>
+                                <span class="spec-value">${model.specs.consumo}</span>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-icon">🏁</div>
+                            <div class="spec-info">
+                                <span class="spec-label">Aceleración</span>
+                                <span class="spec-value">${model.specs.aceleracion}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     `;
 }
@@ -191,165 +1206,46 @@ function renderAdminPage() {
     return `
         <div class="page-header">
             <h1>Panel de Administración</h1>
-            <p>Gestiona tu catálogo de autos</p>
+            <p>Gestiona el catálogo de marcas y modelos</p>
         </div>
         
-        <div class="admin-container">
-            <div class="admin-section">
-                <h2>${state.editingCar ? 'Editar Auto' : 'Agregar Nuevo Auto'}</h2>
-                ${renderCarForm()}
+        <div class="admin-info">
+            <div class="stat-card">
+                <h3>${carBrands.length}</h3>
+                <p>Marcas Disponibles</p>
             </div>
-            
-            <div class="admin-section">
-                <h2>Lista de Autos (${state.cars.length})</h2>
-                ${renderCarList()}
+            <div class="stat-card">
+                <h3>${carBrands.reduce((total, brand) => total + brand.models.length, 0)}</h3>
+                <p>Modelos Totales</p>
             </div>
         </div>
-    `;
-}
-
-function renderCarForm() {
-    const car = state.editingCar || { make: '', model: '', year: '', price: '', description: '' };
-    
-    return `
-        <form id="carForm" class="form-container" style="margin: 0;">
-            <div class="form-group">
-                <label for="make">Marca:</label>
-                <input type="text" id="make" name="make" value="${car.make}" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="model">Modelo:</label>
-                <input type="text" id="model" name="model" value="${car.model}" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="year">Año:</label>
-                <input type="number" id="year" name="year" value="${car.year}" min="1900" max="${new Date().getFullYear() + 1}" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="price">Precio:</label>
-                <input type="number" id="price" name="price" value="${car.price}" min="0" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="description">Descripción:</label>
-                <textarea id="description" name="description" rows="3">${car.description || ''}</textarea>
-            </div>
-            
-            <div class="form-actions">
-                ${state.editingCar ? `
-                    <button type="button" class="button button-secondary" onclick="cancelEdit()">Cancelar</button>
-                    <button type="submit" class="button">Actualizar Auto</button>
-                ` : `
-                    <button type="submit" class="button">Agregar Auto</button>
-                `}
-            </div>
-        </form>
-    `;
-}
-
-function renderCarList() {
-    if (state.cars.length === 0) {
-        return '<p class="empty-state" style="color: #666;">No hay autos en el catálogo</p>';
-    }
-    
-    return `
-        <div style="max-height: 600px; overflow-y: auto;">
-            ${state.cars.map(car => `
-                <div class="car-card" style="margin-bottom: 1rem;">
-                    <h3>${car.make} ${car.model}</h3>
-                    <p class="car-info"><strong>Año:</strong> ${car.year}</p>
-                    <p class="car-price">$${car.price.toLocaleString()}</p>
-                    <div class="car-actions">
-                        <button class="button button-small" onclick="editCar(${car.id})">Editar</button>
-                        <button class="button button-small button-danger" onclick="confirmDelete(${car.id})">Eliminar</button>
+        
+        <div class="admin-section">
+            <h2>Catálogo de Marcas</h2>
+            <div class="brands-list">
+                ${carBrands.map(brand => `
+                    <div class="brand-admin-card">
+                        <div class="brand-admin-header">
+                            <span class="brand-logo-small">${brand.logo}</span>
+                            <h3>${brand.name}</h3>
+                            <span class="badge">${brand.models.length} modelos</span>
+                        </div>
+                        <div class="brand-admin-models">
+                            ${brand.models.map(model => `
+                                <span class="model-tag">${model.name}</span>
+                            `).join('')}
+                        </div>
                     </div>
-                </div>
-            `).join('')}
+                `).join('')}
+            </div>
         </div>
     `;
-}
-
-// Event Listeners
-function attachAdminEventListeners() {
-    const form = document.getElementById('carForm');
-    if (form) {
-        form.addEventListener('submit', handleFormSubmit);
-    }
-}
-
-async function handleFormSubmit(e) {
-    e.preventDefault();
-    
-    const formData = new FormData(e.target);
-    const carData = {
-        make: formData.get('make'),
-        model: formData.get('model'),
-        year: parseInt(formData.get('year')),
-        price: parseFloat(formData.get('price')),
-        description: formData.get('description')
-    };
-    
-    try {
-        if (state.editingCar) {
-            carData.id = state.editingCar.id;
-            await updateCar(carData);
-            state.editingCar = null;
-            render();
-            showMessage('Auto actualizado correctamente', 'success');
-        } else {
-            await addCar(carData);
-            render();
-            showMessage('Auto agregado correctamente', 'success');
-        }
-    } catch (error) {
-        showMessage('Error al guardar el auto: ' + error.message, 'error');
-    }
 }
 
 // Make functions available globally for inline onclick handlers
-// Note: In a production app, consider using event delegation instead
-window.editCar = editCar;
-window.cancelEdit = cancelEdit;
-window.confirmDelete = confirmDelete;
-
-function editCar(id) {
-    state.editingCar = state.cars.find(car => car.id === id);
-    render();
-}
-
-function cancelEdit() {
-    state.editingCar = null;
-    render();
-}
-
-async function confirmDelete(id) {
-    const car = state.cars.find(c => c.id === id);
-    if (confirm(`¿Estás seguro de que quieres eliminar ${car.make} ${car.model}?`)) {
-        try {
-            await deleteCar(id);
-            render();
-            showMessage('Auto eliminado correctamente', 'success');
-        } catch (error) {
-            showMessage('Error al eliminar el auto: ' + error.message, 'error');
-        }
-    }
-}
-
-function showMessage(message, type) {
-    const app = document.getElementById('app');
-    const messageDiv = document.createElement('div');
-    messageDiv.className = type === 'success' ? 'success-message' : 'error-message';
-    messageDiv.textContent = message;
-    
-    app.insertBefore(messageDiv, app.firstChild);
-    
-    setTimeout(() => {
-        messageDiv.remove();
-    }, 3000);
-}
+window.selectBrand = selectBrand;
+window.selectModel = selectModel;
+window.goBack = goBack;
 
 // Initialize App
 async function init() {
@@ -361,8 +1257,8 @@ async function init() {
         </div>
     `;
     
-    // Fetch initial data
-    await fetchCars();
+    // Small delay for loading animation
+    await new Promise(resolve => setTimeout(resolve, 500));
     
     // Handle navigation
     window.addEventListener('hashchange', () => {
