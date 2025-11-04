@@ -1,6 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-  <rect width="100" height="100" fill="#fff"/>
-  <path d="M50 20 L65 45 L35 45 Z" fill="#E60012"/>
-  <path d="M35 55 L50 80 L35 65 Z" fill="#E60012"/>
-  <path d="M65 55 L50 80 L65 65 Z" fill="#E60012"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <!-- Mitsubishi three diamonds logo -->
+  <g fill="#E60012">
+    <path d="M 60 20 L 75 50 L 45 50 Z"/>
+    <path d="M 40 60 L 55 90 L 40 75 Z"/>
+    <path d="M 80 60 L 65 90 L 80 75 Z"/>
+  </g>
+  <text x="60" y="112" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#000" text-anchor="middle">MITSUBISHI</text>
 </svg>

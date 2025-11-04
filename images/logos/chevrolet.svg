@@ -1,3 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-  <path d="M50 10 L85 35 L75 50 L85 65 L50 90 L15 65 L25 50 L15 35 Z" fill="#FFC600" stroke="#000" stroke-width="2"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <!-- Chevrolet bowtie logo -->
+  <path d="M 20 55 L 50 45 L 60 35 L 70 45 L 100 55 L 70 65 L 60 75 L 50 65 Z" fill="#D4AF37" stroke="#000" stroke-width="2"/>
+  <path d="M 60 35 L 70 45 L 60 55 L 50 45 Z" fill="#F4C542"/>
+  <text x="60" y="105" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#000" text-anchor="middle">CHEVROLET</text>
 </svg>
