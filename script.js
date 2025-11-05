@@ -1111,6 +1111,9 @@ function render() {
         case 'model-details':
             app.innerHTML = renderModelDetailsPage();
             break;
+        case 'historia':
+            app.innerHTML = renderHistoriaPage();
+            break;
         case 'admin':
             app.innerHTML = renderAdminPage();
             break;
@@ -1278,6 +1281,112 @@ function renderModelDetailsPage() {
                     </div>
                 </div>
             </div>
+        </div>
+    `;
+}
+
+function renderHistoriaPage() {
+    return `
+        <div class="page-header">
+            <h1>Historia del Automóvil</h1>
+            <p>Un viaje a través del tiempo y la evolución del transporte</p>
+        </div>
+        
+        <div class="historia-section">
+            <h2>La Evolución del Automóvil</h2>
+            <p>
+                El automóvil ha sido una de las invenciones más revolucionarias de la historia moderna, 
+                transformando radicalmente la forma en que las personas se desplazan, trabajan y viven. 
+                Desde sus humildes comienzos hasta convertirse en una parte integral de la vida cotidiana, 
+                el automóvil ha recorrido un largo camino de innovación y desarrollo.
+            </p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="year">1885-1886</div>
+                    <h4>Los Primeros Pasos</h4>
+                    <p>
+                        Karl Benz desarrolló el primer automóvil práctico impulsado por un motor de combustión 
+                        interna en 1885. Un año después, Gottlieb Daimler y Wilhelm Maybach construyeron 
+                        el primer vehículo de cuatro ruedas con motor. Estos pioneros alemanes sentaron las 
+                        bases de la industria automotriz moderna.
+                    </p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="year">1908</div>
+                    <h4>La Revolución de la Producción en Masa</h4>
+                    <p>
+                        Henry Ford introdujo el Modelo T, el primer automóvil producido en masa mediante 
+                        la línea de ensamblaje. Esta innovación revolucionaria redujo drásticamente los 
+                        costos de producción y hizo que los automóviles fueran accesibles para la clase media. 
+                        El Modelo T vendió más de 15 millones de unidades entre 1908 y 1927.
+                    </p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="year">1930-1950</div>
+                    <h4>La Era Dorada del Diseño</h4>
+                    <p>
+                        Durante estas décadas, el diseño automotriz experimentó una transformación radical. 
+                        Los fabricantes comenzaron a enfocarse no solo en la funcionalidad, sino también en 
+                        la estética. Surgieron diseños aerodinámicos, cromados relucientes y líneas elegantes 
+                        que definieron el estilo art déco en el automovilismo.
+                    </p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="year">1960-1980</div>
+                    <h4>Innovación y Seguridad</h4>
+                    <p>
+                        La industria automotriz comenzó a priorizar la seguridad con la introducción de 
+                        cinturones de seguridad, zonas de deformación programada y frenos antibloqueo (ABS). 
+                        También surgió una mayor conciencia ambiental, lo que llevó al desarrollo de motores 
+                        más eficientes y la introducción de convertidores catalíticos.
+                    </p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="year">1990-2010</div>
+                    <h4>La Era Digital</h4>
+                    <p>
+                        Los automóviles se volvieron cada vez más sofisticados con la integración de 
+                        sistemas electrónicos, computadoras de a bordo, sistemas de navegación GPS y 
+                        tecnologías de asistencia al conductor. Los híbridos, como el Toyota Prius (1997), 
+                        marcaron el comienzo de una nueva era de eficiencia energética.
+                    </p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="year">2010-Presente</div>
+                    <h4>Hacia el Futuro Eléctrico y Autónomo</h4>
+                    <p>
+                        La industria está experimentando una transformación sin precedentes con la 
+                        electrificación masiva, liderada por marcas como Tesla. Los vehículos autónomos 
+                        están en desarrollo activo, y la conectividad del Internet de las Cosas (IoT) está 
+                        convirtiendo a los automóviles en dispositivos inteligentes móviles. La sostenibilidad 
+                        y la reducción de emisiones son ahora prioridades centrales en el diseño automotriz.
+                    </p>
+                </div>
+            </div>
+            
+            <h3>El Impacto Social y Cultural</h3>
+            <p>
+                El automóvil no solo cambió el transporte, sino que también transformó la sociedad. 
+                Facilitó la expansión de las ciudades hacia los suburbios, revolucionó la industria del 
+                turismo, cambió los patrones de trabajo y se convirtió en un símbolo de estatus y libertad 
+                personal. Hoy en día, con más de mil millones de vehículos en circulación a nivel mundial, 
+                el automóvil sigue siendo una parte fundamental de la economía global y la vida cotidiana.
+            </p>
+            
+            <h3>Mirando Hacia el Futuro</h3>
+            <p>
+                El futuro del automóvil promete ser tan revolucionario como su pasado. Con el desarrollo 
+                de vehículos totalmente eléctricos, conducción autónoma, inteligencia artificial y nuevos 
+                materiales sostenibles, estamos en el umbral de una nueva era en la movilidad. Los desafíos 
+                ambientales y urbanos están impulsando la innovación hacia soluciones más limpias, 
+                eficientes y conectadas que redefinirán nuestra relación con el transporte personal.
+            </p>
         </div>
     `;
 }
