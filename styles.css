@@ -8,6 +8,7 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-attachment: fixed;
     color: #333;
     min-height: 100vh;
     display: flex;
@@ -180,13 +181,37 @@ main {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Brands Grid */
+/* Brands Grid - Horizontal Scrolling */
 .brands-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    display: flex;
     gap: 2rem;
     margin-top: 2rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 1.5rem 0.5rem;
+    scroll-behavior: smooth;
     animation: fadeIn 0.8s ease-out;
+    /* Hide scrollbar for cleaner look */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(102, 126, 234, 0.5) transparent;
+}
+
+.brands-grid::-webkit-scrollbar {
+    height: 8px;
+}
+
+.brands-grid::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.brands-grid::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 10px;
+}
+
+.brands-grid::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, #764ba2, #667eea);
 }
 
 @keyframes fadeIn {
@@ -210,6 +235,8 @@ main {
     position: relative;
     overflow: hidden;
     border: 1px solid rgba(102, 126, 234, 0.1);
+    min-width: 240px;
+    flex-shrink: 0;
 }
 
 .brand-card::before {
@@ -795,6 +822,83 @@ main {
 .button-small {
     padding: 0.65rem 1.25rem;
     font-size: 0.95rem;
+}
+
+/* Historia Section */
+.historia-section {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    margin-bottom: 2.5rem;
+    border: 1px solid rgba(102, 126, 234, 0.1);
+    animation: fadeIn 0.8s ease-out;
+}
+
+.historia-section h2 {
+    color: #667eea;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    border-bottom: 3px solid #667eea;
+    border-image: linear-gradient(90deg, #667eea, #764ba2) 1;
+    padding-bottom: 0.75rem;
+}
+
+.historia-section h3 {
+    color: #764ba2;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.historia-section p {
+    color: #4a5568;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.timeline-item {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-radius: 14px;
+    padding: 1.75rem;
+    transition: all 0.3s ease;
+    border: 1px solid #e2e8f0;
+    border-left: 5px solid #667eea;
+}
+
+.timeline-item:hover {
+    transform: translateX(8px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+    background: white;
+}
+
+.timeline-item h4 {
+    color: #667eea;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.timeline-item .year {
+    color: #764ba2;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+}
+
+.timeline-item p {
+    margin-bottom: 0;
 }
 
 /* Loading Spinner */
